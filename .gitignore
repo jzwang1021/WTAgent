@@ -3,3 +3,4 @@ dist/
 .env
 *.db
 projects/
+docs/iec/chroma_db/
