@@ -1,0 +1,100 @@
+[
+  {
+    "id": "sec6-2-turbine-classes",
+    "title": "Wind turbine classes (Table 1)",
+    "section": "6.2",
+    "content": "Wind turbine classes I, II, III are defined by Vref (reference wind speed) and Iref (reference turbulence intensity). Class I: Vref=50m/s, Class II: Vref=42.5m/s, Class III: Vref=37.5m/s. Turbulence categories: A (Iref=0.16, high), B (Iref=0.14, medium), C (Iref=0.12, low). Class S is site-specific, defined by the manufacturer.",
+    "tags": ["wind-class", "turbulence", "turbine-classification"]
+  },
+  {
+    "id": "sec6-3-wind-conditions",
+    "title": "Wind conditions (NTM, ETM, EWM, etc.)",
+    "section": "6.3",
+    "content": "Normal Turbulence Model (NTM): standard turbulence characterized by standard deviation σ1 = Iref(0.75Vhub + b) where b=5.6m/s. Extreme Turbulence Model (ETM): σ1 = c·Iref·(0.072(Vave/c+3)(Vhub/c-4)+10) with c=2m/s. Extreme Wind Speed Model (EWM): steady or turbulent wind with 50-year or 1-year recurrence. Normal Wind Profile (NWP): power law V(z)=Vhub(z/zhub)^α. Extreme Operating Gust (EOG): gust shape Vgust = β[1-cos(2πt/T)]/2. Extreme Coherent Gust (ECD): simultaneous wind speed increase + direction change. Extreme Wind Shear (EWS): transient horizontal/vertical shear.",
+    "tags": ["NTM", "ETM", "EWM", "EOG", "ECD", "EWS", "wind-model"]
+  },
+  {
+    "id": "sec7-3-load-types",
+    "title": "Types of loads (7.3.1-7.3.4)",
+    "section": "7.3",
+    "content": "Four categories of loads: (1) Gravity loads: self-weight of all components. (2) Inertial and gyroscopic loads: centrifugal forces, gyroscopic moments during yawing, braking forces. (3) Aerodynamic loads: forces from wind interaction with blades and tower, including lift, drag, moment, considering turbulence, shear, and gust effects. (4) Other loads: waves (offshore), ice, seismic, transport, assembly.",
+    "tags": ["load-types", "gravity", "inertial", "aerodynamic", "seismic"]
+  },
+  {
+    "id": "sec7-4-DLC-matrix",
+    "title": "Design Load Cases (DLC) Matrix - Table 2",
+    "section": "7.4",
+    "content": "Table 2 defines 8 design situations with DLC 1.1-8.2. Power production (DLC 1.1-1.5): NTM+extrapolation(U), NTM(F), ETM(U), ECD(U), EWS(U). Power+fault (DLC 2.1-2.4): control fault(U), protection fault(U), electrical fault(U), faults(F). Start-up (DLC 3.1-3.3): NWP(F), EOG(U), EDC(U). Normal shut-down (DLC 4.1-4.2): NWP(F), EOG(U). Emergency shut-down (DLC 5.1): NTM+grid loss(U). Parked (DLC 6.1-6.4): EWM50yr+±15° yaw(U), EWM50yr+grid loss(U), EWM1yr+±20° yaw(U), NTM(F). Parked+fault (DLC 7.1): EWM1yr+±20° yaw(U). Transport (DLC 8.1-8.2): EWM1yr(U), NTM(F).",
+    "tags": ["DLC", "design-load-cases", "load-matrix", "table-2"]
+  },
+  {
+    "id": "sec7-4-DLC-1",
+    "title": "DLC 1 Power production loads",
+    "section": "7.4.1",
+    "content": "DLC 1.1: NTM wind, Vin<Vhub<Vout, extrapolation of extreme events, U analysis, N safety. DLC 1.2: NTM wind, F (fatigue) analysis. DLC 1.3: ETM wind, U analysis, N safety. DLC 1.4: ECD wind at Vhub=Vr-2,Vr,Vr+2 m/s, U analysis, N safety. DLC 1.5: EWS wind, U analysis, N safety. If extreme values from DLC 1.3 exceed DLC 1.1 values, DLC 1.1 may be omitted. Statistical analysis of DLC 1.1 includes mean, standard deviation, and extreme value distribution fitting.",
+    "tags": ["DLC-1", "power-production", "NTM", "ETM", "ECD", "EWS"]
+  },
+  {
+    "id": "sec7-4-DLC-2",
+    "title": "DLC 2 Power production plus fault",
+    "section": "7.4.2",
+    "content": "DLC 2.1: NTM + control system fault or loss of electrical network, U, N safety. DLC 2.2: NTM + protection system fault or internal electrical fault, U, A (abnormal) safety. DLC 2.3: EOG at Vhub=Vr±2m/s and Vout + external/internal electrical fault including grid loss, U, A safety. DLC 2.4: NTM + control/protection/electrical system faults, F (fatigue) analysis.",
+    "tags": ["DLC-2", "fault", "grid-loss", "protection-fault"]
+  },
+  {
+    "id": "sec7-4-DLC-3-4-5",
+    "title": "DLC 3 (Start-up), DLC 4 (Normal shut-down), DLC 5 (Emergency shut-down)",
+    "section": "7.4.3-7.4.5",
+    "content": "DLC 3.1 (Start-up): NWP, F. DLC 3.2: EOG at Vhub=Vr±2m/s and Vout, U, N. DLC 3.3: EDC at Vhub=Vin,Vr,Vout, U, N. DLC 4.1 (Normal shut-down): NWP, F. DLC 4.2: EOG at Vhub=Vr±2m/s, U, N. DLC 5.1 (Emergency shut-down): NTM at Vhub=Vr±2m/s and Vout + loss of electrical network, U, A. For DLC 5.1, at least 12 simulations per event.",
+    "tags": ["DLC-3", "DLC-4", "DLC-5", "start-up", "shut-down", "emergency"]
+  },
+  {
+    "id": "sec7-4-DLC-6",
+    "title": "DLC 6 Parked (standstill or idling)",
+    "section": "7.4.6",
+    "content": "DLC 6.1: EWM 50-year recurrence + active yaw system ±15° misalignment, U, N. DLC 6.2: EWM 50-year + loss of electrical network (unable to yaw), U, A. DLC 6.3: EWM 1-year + extreme yaw misalignment ±20°, U, N. DLC 6.4: NTM during non-productive hours, F. For EWM cases, either steady (turbulence-free) or turbulent model may be used. The extreme wind speed model shall follow V50(z)=Vref(z/zhub)^α and V1(z)=0.8V50(z).",
+    "tags": ["DLC-6", "parked", "standstill", "EWM", "extreme-wind", "yaw"]
+  },
+  {
+    "id": "sec7-4-DLC-7-8",
+    "title": "DLC 7 Parked+fault, DLC 8 Transport",
+    "section": "7.4.7-7.4.8",
+    "content": "DLC 7.1: EWM 1-year + yaw misalignment consistent with DLC 6.1 + fault condition, U, A. If yaw slippage can occur at characteristic loads, the largest resulting load shall be considered. DLC 8.1: EWM 1-year, transport/maintenance/assembly conditions specified by manufacturer, U, T. DLC 8.2: NTM at Vhub<0.7Vref, F. Blocking devices shall sustain loads from DLC 8.1 relevant situations.",
+    "tags": ["DLC-7", "DLC-8", "parked-fault", "transport", "maintenance"]
+  },
+  {
+    "id": "sec7-6-partial-safety-factors",
+    "title": "Partial safety factors for loads (Table 3)",
+    "section": "7.6.2",
+    "content": "Table 3 partial safety factors γf for loads: Normal (N): γf=1.35 (unfavourable), 0.9 (favourable). DLC 1.1 with statistical extrapolation: γf=1.25. Abnormal (A): γf=1.1 (unfavourable), 0.9 (favourable). Transport and erection (T): γf=1.5 (unfavourable), 0.9 (favourable). For gravity loads combined with other loads: if gravity is favourable (Fgravity_k ≤ 0) use γf=1.0; if gravity is unfavourable (Fgravity_k > 0) use γf=1.35/1.1/1.5 depending on design situation.",
+    "tags": ["safety-factor", "partial-factor", "gamma-f", "table-3"]
+  },
+  {
+    "id": "sec7-6-ULS",
+    "title": "Ultimate limit state analysis",
+    "section": "7.6.2",
+    "content": "Ultimate limit state verification: design load Fd = γf × Fk (γf from Table 3). Design resistance Rd = Rk / γm. For steel: γm=1.1 (buckling/stability), γm=1.2 (ultimate strength/fracture). Verification: Fd ≤ Rd. All relevant failure modes shall be considered: yielding, buckling, fracture, overturning, sliding, bearing capacity.",
+    "tags": ["ULS", "ultimate-limit-state", "strength", "buckling", "resistance"]
+  },
+  {
+    "id": "sec7-6-fatigue",
+    "title": "Fatigue analysis (Palmgren-Miner rule)",
+    "section": "7.6.3",
+    "content": "Fatigue assessment using Palmgren-Miner linear cumulative damage rule: D = Σ(ni/Ni) ≤ 1.0, where ni is number of cycles at stress range Si, Ni is allowable cycles from S-N curve at Si. Partial safety factor for fatigue loads: γf=1.0. Equivalent fatigue load (DEL) method can simplify variable amplitude loading. For welded details, additional partial factors apply based on inspection interval and accessibility.",
+    "tags": ["fatigue", "Miner", "Palmgren-Miner", "SN-curve", "DEL"]
+  },
+  {
+    "id": "sec7-5-load-calculation",
+    "title": "Load calculation requirements (7.5)",
+    "section": "7.5",
+    "content": "All loads from 7.3.1-7.3.4 shall be considered for each DLC. Aeroelastic modeling is required for dynamic load calculations. For turbulent wind cases, minimum simulation duration: 10 minutes (600s) of real time for each seed. For DLC 2.1, 2.2 and 5.1: at least 12 simulations per event. Statistical analysis of simulation results shall include mean, standard deviation, and appropriate extreme value distribution fitting.",
+    "tags": ["load-calculation", "simulation", "aeroelastic", "statistical-analysis"]
+  },
+  {
+    "id": "sec11-site-assessment",
+    "title": "Site-specific condition assessment (Section 11)",
+    "section": "11",
+    "content": "Assessment of wind turbine for site-specific conditions includes: topographical complexity assessment (11.2), wind conditions assessment (11.3: measured or reference wind data), wake effects from neighbouring turbines (11.4), other environmental conditions (11.5: temperature, icing, humidity), earthquake conditions (11.6), electrical network conditions (11.7), soil conditions (11.8). Structural integrity assessment may use either reference to wind data (11.9) or load calculations with site-specific conditions (11.10).",
+    "tags": ["site-assessment", "wind-data", "wake", "seismic", "soil"]
+  }
+]
