@@ -1,9 +1,23 @@
 /**
- * SAP2000 OAPI 运行时
+ * SAP2000 OAPI 运行时 — 结构设计验算
  *
- * 封装 SAP2000 COM 接口调用逻辑。
- * 从 jzwang1021/WTdesign/yuhoner-1 module3 提炼，
- * 但采用更清晰的接口设计，脱离 Excel 数据总线。
+ * 关键数据流（修正）：
+ *
+ *    OpenFAST (气动-伺服-弹性仿真)
+ *      │  考虑：控制策略 + DLC工况 + 湍流风场
+ *      │
+ *      ▼
+ *      导出的机舱处六分量内力 ← 核心接口数据
+ *      Fx, Fy, Fz (剪力/轴力), Mx, My, Mz (弯矩/扭矩)
+ *      │
+ *      ▼
+ *    SAP2000 (结构设计验算)
+ *      在机舱高度处施加六分量荷载
+ *      完成钢框架/混凝土设计校核（中国规范 / Eurocode / AISC）
+ *      输出应力比、位移、模态频率
+ *
+ * SAP2000 不自己做气弹分析，只做结构设计验算。
+ * OpenFAST 生成荷载，SAP2000 用这些荷载验算结构。
  *
  * 依赖：comtypes (Python) / win32com (Python)
  * 在 WSL 下需通过 Windows Python 解释器运行。

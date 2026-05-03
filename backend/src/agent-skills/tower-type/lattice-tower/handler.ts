@@ -449,19 +449,21 @@ export const latticeTowerHandler: SkillHandler = {
       },
       analysisCapabilities: [
         {
+          engine: 'OpenFAST',
+          tasks: ['气动-伺服-弹性仿真', 'DLC工况生成', '导出机舱六分量内力'],
+          output: 'Fx, Fy, Fz, Mx, My, Mz → 供SAP2000验算',
+          method: '子进程 + NREL 5MW参数适配',
+        },
+        {
           engine: 'SAP2000',
-          tasks: ['参数化建模', '静力分析', '模态分析', '钢框架设计(GB 50017-2018)'],
+          tasks: ['结构设计验算', '钢框架设计(GB 50017-2018)'],
+          inputFrom: 'OpenFAST六分量内力',
           method: 'OAPI COM接口 (comtypes)',
         },
         {
           engine: 'OpenSeesPy',
-          tasks: ['抗震分析', 'Pushover分析'],
+          tasks: ['抗震分析', 'Pushover分析', '非线性屈曲'],
           method: 'Python子进程',
-        },
-        {
-          engine: 'OpenFAST',
-          tasks: ['气弹耦合仿真', 'DLC荷载工况'],
-          method: '子进程 + NREL 5MW参数适配',
         },
       ],
       // Store computed params for downstream skills
