@@ -1,0 +1,45 @@
+id: lattice-tower
+domain: tower-type
+source: builtin
+name:
+  zh: 格构式桁架塔
+  en: Lattice Tower
+description:
+  zh: 格构式（桁架式）风电塔的参数化设计、SAP2000/OpenFAST/OpenSees联合仿真与优化 skill。
+  en: Skill for lattice (truss) wind turbine tower parametric design, SAP2000/OpenFAST/OpenSees co-simulation and optimization.
+triggers:
+  - 格构塔
+  - 桁架塔
+  - lattice tower
+  - 角钢塔
+  - 格构式
+  - 桁架式
+  - truss tower
+  - 格构式塔架
+stages:
+  - intent
+  - draft
+  - analysis
+  - design
+structureType: lattice-tower
+capabilities:
+  - intent-detection
+  - draft-extraction
+  - interaction-questions
+  - model-build
+  - sap2000-modeling
+  - sap2000-analysis
+  - openfast-coupling
+  - opensees-analysis
+  - frequency-check
+  - code-check
+  - weight-optimization
+  - report-narrative
+requires:
+  - wind-load
+  - material/steel
+conflicts:
+  - steel-tower
+  - hybrid-tower
+  - concrete-tower
+priority: 85
