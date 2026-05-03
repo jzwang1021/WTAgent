@@ -1,0 +1,21 @@
+{
+  "port": 3001,
+  "host": "0.0.0.0",
+  "llm": {
+    "provider": "deepseek",
+    "model": "deepseek-chat",
+    "apiKey": "${DEEPSEEK_API_KEY}",
+    "baseUrl": "https://api.deepseek.com/v1",
+    "temperature": 0.1,
+    "maxTokens": 4096
+  },
+  "database": {
+    "provider": "sqlite",
+    "url": "file:./data/wtagent.db"
+  },
+  "analysis": {
+    "openfastPath": "",
+    "openseesPath": "",
+    "projectsDir": "./projects"
+  }
+}

@@ -1,0 +1,36 @@
+id: steel-tower
+domain: tower-type
+source: builtin
+name:
+  zh: 钢制锥筒塔
+  en: Steel Conical Tower
+description:
+  zh: 钢制锥筒式风电塔塔筒的参数识别与建模 skill。
+  en: Skill for steel conical wind turbine tower parameter extraction and modeling.
+triggers:
+  - 钢塔
+  - 锥筒塔
+  - steel tower
+  - conical tower
+  - 圆筒塔
+  - 塔筒
+  - tower
+  - 风电塔
+stages:
+  - intent
+  - draft
+  - analysis
+  - design
+structureType: steel-tower
+capabilities:
+  - intent-detection
+  - draft-extraction
+  - interaction-questions
+  - model-build
+  - frequency-check
+  - report-narrative
+requires: []
+conflicts:
+  - lattice-tower
+  - hybrid-tower
+priority: 80
