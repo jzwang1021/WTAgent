@@ -96,10 +96,9 @@ backend/
 │   │   ├── analysis.types.ts
 │   │   ├── project.types.ts
 │   │   └── agent.types.ts
+│   ├── js-yaml.d.ts          # js-yaml 类型声明
 │   ├── config/
-│   │   ├── settings.json      # LLM / DB / 分析引擎路径等
-│   │   ├── settings.schema.ts # 配置校验
-│   │   └── index.ts           # 热加载配置管理器
+│   │   ├── settings.json      # LLM / DB / 分析引擎路径等 (在 config/)
 │   ├── utils/
 │   │   ├── logger.ts
 │   │   ├── units.ts           # 单位转换（kN·m, MPa, Hz 等）
@@ -130,7 +129,8 @@ backend/
 │   │   │   └── report-gen.ts  # 报告生成节点
 │   │   ├── tools.ts           # 工程工具函数
 │   │   ├── tool-registry.ts   # 工具注册中心
-│   │   └── system-prompt.ts   # 双语言系统提示词
+│   │   ├── system-prompt.ts   # 双语言系统提示词
+│   │   └── rag-tool.ts       # IEC 61400 RAG 查询工具
 │   ├── agent-runtime/         # 分析引擎运行时
 │   │   ├── engine-registry.ts # 引擎注册中心
 │   │   ├── openfast/
@@ -518,21 +518,27 @@ projects/
 
 ## 8. 实施路线图
 
-### Phase 1：基础框架（当前目标）
-- [ ] 搭建 backend 目录结构（agent-langgraph / agent-runtime / agent-skills）
-- [ ] 实现 LangGraph 基础图（Supervisor → Skill Runner）
-- [ ] 实现第一个 Skill：`tower-type/steel-tower`（参数提取）
-- [ ] 实现 `frequency` Skill（简化梁模型频率估算）
-- [ ] 对接 OpenSeesPy 运行时（模态分析）
-- [ ] 初步前端（Next.js 聊天界面 + Three.js 基本展示）
+### Phase 1：基础框架 ✅ (2026-05-03 完成)
+- [x] 搭建 backend 完整目录结构（agent-langgraph / agent-runtime / agent-skills）
+- [x] 实现 LangGraph 基础图（Supervisor → Skill Runner → Report Gen，三节点管线）
+- [x] 实现 Steel Tower Skill（钢制锥筒塔参数提取 + 频率估算）
+- [x] 实现 Lattice Tower Skill（格构塔参数化建模 + 质量分解 + 频率估算）
+- [x] 实现工程工具集（锥度比/质量估算/频率估算/1P-3P避让校验）
+- [x] 集成 IEC 61400-1:2005 RAG 知识库（14个RAG块 + TF-IDF查询脚本）
+- [x] 实现 SAP2000 OAPI 运行时模板（接收六分量内力进行结构验算）
+- [x] 实现 Fastify API（/api/chat + /api/projects）
+- [x] 实现 Skill 自动发现加载（YAML扫描注册）
+- [x] TypeScript 零错误编译 + Git推送
 
-### Phase 2：核心功能
-- [ ] 实现 `wind-load` Skill（IEC 61400 DLC 计算）
-- [ ] 实现 `analysis` Skill（OpenSees 静力 + 模态）
-- [ ] 实现 `code-check` Skill（极限强度校核）
-- [ ] 实现 `foundation/monopile` Skill
-- [ ] 对接 OpenFAST 运行时
-- [ ] Report 生成（Word）
+### Phase 2：核心功能（下一阶段）
+- [ ] 实现 `wind-load` Skill（IEC 61400 DLC 风荷载计算）
+- [ ] 实现 `analysis` Skill（OpenSeesPy 静力 + 模态分析运行时对接）
+- [ ] 实现 `code-check` Skill（极限强度校核，对接 IEC RAG）
+- [ ] 实现 SAP2000 运行时实际调用（格构塔建模 + 六分量荷载施加 + 设计验算）
+- [ ] 实现 OpenFAST 运行时对接（读取 .out 文件，提取六分量内力）
+- [ ] 实现 `foundation/monopile` Skill（单桩基础设计）
+- [ ] 前端 Next.js 界面（ChatGPT风格UI + Three.js基本展示）
+- [ ] Report 生成（Word/PDF导出）
 
 ### Phase 3：高级功能
 - [ ] `fatigue` Skill（Miner 累积损伤）
