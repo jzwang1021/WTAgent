@@ -5,6 +5,7 @@ import { skillRunnerNode } from './nodes/skill-runner.js';
 import { reportGenNode } from './nodes/report-gen.js';
 import { toolRegistry } from './tool-registry.js';
 import { engineeringTools } from './tools.js';
+import { iecCodeQuery } from './rag-tool.js';
 import { buildSystemPrompt } from './system-prompt.js';
 import { createScopedLogger } from '../utils/logger.js';
 
@@ -14,6 +15,9 @@ const log = createScopedLogger('graph');
 for (const t of engineeringTools) {
   toolRegistry.register(t);
 }
+
+// Register RAG tools
+toolRegistry.register(iecCodeQuery);
 
 /**
  * Build and compile the WTAgent state graph.
